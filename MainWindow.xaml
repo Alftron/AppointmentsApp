@@ -1,0 +1,50 @@
+﻿<Window x:Class="AppointmentsApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppointmentsApp"
+        mc:Ignorable="d"
+        Title="Appointment Booking Application" Height="450" Width="800">
+    <Grid>
+        <Menu>
+            <MenuItem Header="File">
+                <MenuItem Header="New appointment..." Click="NewAppointmentItem_Click"/>
+                <Separator/>
+                <MenuItem Header="Exit" Click="ExitItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Search">
+                <MenuItem Header="Find by customer..."/>
+                <MenuItem Header="Find by date..."/>
+            </MenuItem>
+            <MenuItem Header="Options">
+                <MenuItem Header="Settings..."/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About..."/>
+            </MenuItem>
+        </Menu>
+        <DockPanel LastChildFill="True">
+            <TextBox Margin="5,20,5,5"
+                     TextChanged="SearchTextBox_TextChanged"
+                     DockPanel.Dock="Top"/>
+            <ListView x:Name="appointmentsListView"
+                      Margin="5"
+                      DockPanel.Dock="Top">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="First Name" Width="Auto" DisplayMemberBinding="{Binding FirstName}"/>
+                        <GridViewColumn Header="Last Name" Width="Auto" DisplayMemberBinding="{Binding LastName}"/>
+                        <GridViewColumn Header="Email" Width="Auto" DisplayMemberBinding="{Binding Email}"/>
+                        <GridViewColumn Header="Phone Number" Width="Auto" DisplayMemberBinding="{Binding PhoneNumber}"/>
+                        <GridViewColumn Header="Date" Width="Auto" DisplayMemberBinding="{Binding AppointmentDate}"/>
+                        <GridViewColumn Header="Time" Width="Auto" DisplayMemberBinding="{Binding AppointmentTime}"/>
+                        <GridViewColumn Header="Length (m)" Width="Auto" DisplayMemberBinding="{Binding AppointmentLength}"/>
+                        <GridViewColumn Header="Cost (£)" Width="Auto" DisplayMemberBinding="{Binding AppointmentCost}"/>
+                        <GridViewColumn Header="Status" Width="Auto" DisplayMemberBinding="{Binding Status}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>
